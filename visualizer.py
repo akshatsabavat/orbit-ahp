@@ -11,6 +11,8 @@ import os
 # set style
 sns.set_style("whitegrid")
 plt.rcParams['figure.figsize'] = (12, 8)
+matrix_viz = AHPMatrixVisualizer()
+
 
 class ORBITVisualizer:
     """
@@ -292,7 +294,6 @@ class ORBITVisualizer:
         self.plot_sensitivity_analysis(ranked_products, user_profile, user_name)
         self.plot_criteria_radar(ranked_products, user_name)
         self.plot_price_vs_score(ranked_products, user_name)
-        matrix_viz = AHPMatrixVisualizer()
         matrix_viz.generate_all_matrices(ahp_matrices, user_name)
         
         print(f"✅ All visualizations saved to {self.output_dir}/")
