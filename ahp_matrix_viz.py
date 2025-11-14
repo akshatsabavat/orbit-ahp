@@ -38,12 +38,12 @@ class AHPMatrixVisualizer:
         table.set_fontsize(11)
         table.scale(1, 2)
         
-        # style header
+        # style header, idk something pretty lol
         for i in range(3):
             table[(0, i)].set_facecolor('#4472C4')
             table[(0, i)].set_text_props(weight='bold', color='white')
         
-        # alternate row colors
+        # alternate row colors, no a great idea messed up a lot change later
         for i in range(1, len(data) + 1):
             color = '#E7E6E6' if i % 2 == 0 else 'white'
             for j in range(3):

@@ -58,13 +58,11 @@ DEFAULT_CRITERIA = {
     "cost_criteria": ["price"]
 }
 
-
-# the "agent" - now query-driven with fixed criteria
 class ORBITAgent:
     """
     ORBIT Agent: Query-driven AHP product ranking
     
-    Flow:
+    Basic Agent Flow:
     1. Parse user query → extract requirements
     2. Fetch candidate products
     3. Analyze user history → derive base preferences
@@ -148,7 +146,7 @@ Return ONLY valid JSON:
         avg_price = sum(prices) / len(prices)
         price_variance = np.std(prices) if len(prices) > 1 else 0
         
-        # price sensitivity: low variance = consistent budget = high sensitivity
+        # price sensitivity, inversing this because --> low variance = consistent budget = high sensitivity, so more cheaper the better
         price_sensitivity = 1 - min(price_variance / avg_price, 1.0) if avg_price > 0 else 0.5
         
         brand_counts = Counter(brands)
