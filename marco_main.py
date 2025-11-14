@@ -10,7 +10,6 @@ from db import Database
 from macro_ahp_engine import ORBITMacroAgent
 from macro_visualizer import ORBITMacroVisualizer
 from models import VendorProfile
-import json
 
 def demo_macro_system():
     """
@@ -55,9 +54,7 @@ def demo_macro_system():
         print(f"🏢 ANALYZING: {vendor_name}")
         print(f"{'='*70}")
         
-        # ==========================================
         # QUESTION 1: Which products are doing well?
-        # ==========================================
         print(f"\n{'='*70}")
         print("❓ QUESTION 1: Which products are performing best?")
         print(f"{'='*70}")
@@ -84,9 +81,7 @@ def demo_macro_system():
                 top_criteria = sorted(criteria_weights.items(), key=lambda x: x[1], reverse=True)[:3]
                 print(f"   🎯 This segment values: {', '.join([c[0] for c in top_criteria])}")
         
-        # ==========================================
         # QUESTION 2: What's not selling?
-        # ==========================================
         print(f"\n\n{'='*70}")
         print("❓ QUESTION 2: Which products are underperforming?")
         print(f"{'='*70}")
@@ -107,9 +102,8 @@ def demo_macro_system():
                 else:
                     print(f"   ⚠️  PROBLEM: Product doesn't match customer needs")
         
-        # ==========================================
+
         # QUESTION 3: Product gaps analysis
-        # ==========================================
         print(f"\n\n{'='*70}")
         print("❓ QUESTION 3: What product opportunities exist?")
         print(f"{'='*70}")
@@ -162,9 +156,7 @@ def demo_macro_system():
         top_criteria = sorted_criteria[0][0]
         print(f"\n   💡 Customers value '{top_criteria}' most - ensure products highlight this")
         
-        # ==========================================
         # QUESTION 4: Strategic recommendations
-        # ==========================================
         print(f"\n\n{'='*70}")
         print("❓ QUESTION 4: What should we do to improve?")
         print(f"{'='*70}")

@@ -1,6 +1,8 @@
 """
 TEST MACRO SYSTEM
 Simple test script for vendor strategic analysis
+
+DELETE THIS LATER IF NEEDED
 """
 
 from dotenv import load_dotenv
@@ -17,9 +19,8 @@ def test_macro():
     print("🛸 ORBIT MACRO TEST")
     print("="*70)
     
-    # Init (using YOUR existing db.py!)
     db = Database()
-    agent = ORBITMacroAgent()  # Uses Gemini!
+    agent = ORBITMacroAgent() 
     viz = ORBITMacroVisualizer()
     
     vendor_id = "vnd_techbuy"
@@ -27,10 +28,8 @@ def test_macro():
     
     print(f"\n🏢 Analyzing: {vendor_id} in {category}")
     
-    # Get vendor profile from YOUR vendor_strategic_insights table
     print("\n📊 Fetching vendor data...")
     
-    # Use your existing Database class
     result = db.supabase.table('vendor_strategic_insights').select(
         '*, vendors(*)'
     ).eq('vendor_id', vendor_id).eq('category_id', category).execute()
@@ -42,7 +41,6 @@ def test_macro():
     insight = result.data[0]
     vendor_name = insight['vendors']['vendor_name'] if insight.get('vendors') else vendor_id
     
-    # Build VendorProfile from YOUR data
     from models import VendorProfile
     
     vendor_profile = VendorProfile(

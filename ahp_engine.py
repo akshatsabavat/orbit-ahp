@@ -356,14 +356,14 @@ Return ONLY valid JSON:
         print(f"   Query: '{query}'")
         print("="*60)
         
-        # step 1: parse query
+        #  parse query
         print("\n📝 Step 1: Parsing query...")
         query_parsed = self.parse_query(query)
         print(f"   Category: {query_parsed.get('category')}")
         print(f"   Use Case: {query_parsed.get('use_case')}")
         print(f"   Budget: ${query_parsed.get('budget_max', 'no limit')}")
         
-        # step 2: analyze user history
+        # analyze user history
         print("\n👤 Step 2: Analyzing user purchase history...")
         user_profile = self.analyze_user_history(purchase_history, query_parsed.get('category', 'general'))
         print(f"   Total Purchases: {user_profile['total_purchases']}")
@@ -402,28 +402,28 @@ Return ONLY valid JSON:
                 total_purchases=user_profile['total_purchases']
             ), {}
         
-        # step 3: get fixed criteria set
+        # get fixed criteria set
         print("\n🎯 Step 3: Getting fixed criteria set...")
         criteria, cost_criteria = self.get_criteria_set(query_parsed.get('category', 'general'))
         print(f"   Criteria: {criteria}")
         print(f"   Cost Criteria (will be inverted): {cost_criteria}")
         
-        # step 4: calculate weights
+        # calculate weights
         print("\n⚖️  Step 4: Calculating criteria weights...")
         criteria_weights = self.calculate_criteria_weights(criteria, query_parsed, user_profile)
         for c, w in criteria_weights.items():
             print(f"   {c}: {w:.3f}")
         
-        # step 5: score products
+        # score products
         print("\n📊 Step 5: Scoring products...")
         product_scores = self.score_products_relative(candidate_products, criteria, 
                                                       query_parsed, user_profile, cost_criteria)
         
-        # step 6: calculate AHP scores
+        # calculate AHP scores
         print("\n🏆 Step 6: Calculating final AHP scores...")
         ahp_scores = self.calculate_ahp_scores(product_scores, criteria_weights)
         
-        # step 7: build ranked results
+        # build ranked results
         ranked_products = []
         for product in candidate_products:
             if product.product_id in ahp_scores:

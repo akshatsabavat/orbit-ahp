@@ -236,22 +236,22 @@ class AHPMatrixVisualizer:
         
         files = []
         
-        # 1. Criteria weights table
+        # Criteria weights table
         f = self.save_criteria_weights_table(ahp_matrices, username)
         files.append(f)
         print(f"   ✓ Criteria weights table: {f.name}")
         
-        # 2. Product scores matrix
+        # Product scores matrix
         f = self.save_product_scores_matrix(ahp_matrices, username)
         files.append(f)
         print(f"   ✓ Product scores matrix: {f.name}")
         
-        # 3. Decision hierarchy
+        # Decision hierarchy
         f = self.save_decision_hierarchy(ahp_matrices, username)
         files.append(f)
         print(f"   ✓ Decision hierarchy: {f.name}")
         
-        # 4. Pairwise comparison matrix
+        # Pairwise comparison matrix
         f = self.save_criteria_comparison_matrix(ahp_matrices, username)
         files.append(f)
         print(f"   ✓ Pairwise comparison matrix: {f.name}")
